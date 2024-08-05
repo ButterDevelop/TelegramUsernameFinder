@@ -9,12 +9,15 @@ namespace TelegramUsernameFinder.UsernameCheckers
 {
     public class TelegramWebUsernameBotUsernameChecker : ITelegramWebUsernameChecker
     {
+        private const int REFRESH_PAGE_EVERY_N_USERNAMES = 10;
+
         private readonly string     _profilePath;
         private readonly string     _profileName;
         private readonly Utils      _utils;
         private readonly IWebDriver _driver;
 
         private bool _doNotStartNextTime;
+        private int  _checkedUsernamesCounter;
 
         public TelegramWebUsernameBotUsernameChecker(string profilePath, string profileName)
         {
@@ -23,7 +26,8 @@ namespace TelegramUsernameFinder.UsernameCheckers
             _utils       = new();
             _driver      = InitializeWebDriver();
 
-            _doNotStartNextTime = false;
+            _doNotStartNextTime      = false;
+            _checkedUsernamesCounter = 0;
         }
 
         public IWebDriver InitializeWebDriver()
@@ -99,6 +103,13 @@ namespace TelegramUsernameFinder.UsernameCheckers
         {
             try
             {
+                _checkedUsernamesCounter++;
+                if (_checkedUsernamesCounter % REFRESH_PAGE_EVERY_N_USERNAMES == 0)
+                {
+                    _driver.Navigate().Refresh();
+                    Thread.Sleep(3000);
+                }
+
                 // Ввод username для проверки
                 IWebElement usernameInput = _driver.FindElement(By.Id("editable-message-text"));
 

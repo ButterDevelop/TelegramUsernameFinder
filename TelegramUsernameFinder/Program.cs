@@ -7,7 +7,7 @@ namespace TelegramUsernameFinder
     {
         static async Task Main(string[] args)
         {
-            const string baseInputFilename = "words_alpha.txt";//"companies_sorted.csv.001";
+            const string baseInputFilename = "unigram_freq.txt";// "words_alpha.txt";//"companies_sorted.csv.001";
 
             string inputFilename  = Path.Combine("input", baseInputFilename),
                    outputFilename = Path.Combine("output", "output_" + baseInputFilename);
