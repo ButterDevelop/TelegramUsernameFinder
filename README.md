@@ -4,6 +4,8 @@
 
 ![TelegramUsernameFinder GUI](./gui.png)
 
+![TelegramUsernameFinder GUI 2](./gui2.png)
+
 ## Overview
 
 **TelegramUsernameFinder** is a robust tool designed to automate the process of finding, reserving, and selling available Telegram usernames on the Fragment platform.
