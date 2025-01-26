@@ -1,7 +1,6 @@
-﻿using TelegramUsernameFinder.Helpers;
-using HtmlAgilityPack;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text;
+using TelegramUsernameFinder.Helpers;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace TelegramUsernameFinder.UsernameCheckers
